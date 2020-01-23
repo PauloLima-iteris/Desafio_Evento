@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class StatusEventoRequest {
 
     @NotEmpty(message = "Nome Status is required")
-    @Size(min = 1, max =  255)
+    @Size(min = 1, max =  250)
     private String NomeStatus;
 
 }

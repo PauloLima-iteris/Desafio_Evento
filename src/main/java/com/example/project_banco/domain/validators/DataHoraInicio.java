@@ -10,14 +10,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = PhoneValidator.class)
+@Constraint(validatedBy = DataHoraInicioValidator.class)
 @Documented
-public @interface Phone {
+public @interface DataHoraInicio {
 
-    String message() default "Telefone inválido, deve ter entre 8 e 11 digítos numéricos.";
-
+    String message() default "Data de inicio inválida.";
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
-
 } 

@@ -2,6 +2,7 @@ package com.example.project_banco.domain.dto.request;
 
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -19,9 +20,9 @@ public class ParticipacaoRequest {
     private Integer IdEvento;
 
     @NotEmpty(message = "Login_Participante is required")
-    @Size(min = 1, max =  255)
+    @Size(min = 1, max =  250)
     private String LoginParticipante;
 
-    //@NotEmpty(message = "Flag_Presente is required")
+    @NotNull
     private Boolean FlagPresente;
 }
