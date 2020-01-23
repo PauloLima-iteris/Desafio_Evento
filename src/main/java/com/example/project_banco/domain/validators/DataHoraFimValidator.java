@@ -1,13 +1,11 @@
 package com.example.project_banco.domain.validators;
 
 import java.util.Calendar;
-import java.util.Date;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
 import com.example.project_banco.domain.dto.request.EventoRequest;
 
-public class DataHoraFimValidator implements ConstraintValidator<DataHoraInicio, EventoRequest> {
+public class DataHoraFimValidator implements ConstraintValidator<DataHoraFim, EventoRequest> {
 
     @Override
     public boolean isValid(EventoRequest value, ConstraintValidatorContext context) {
@@ -20,22 +18,9 @@ public class DataHoraFimValidator implements ConstraintValidator<DataHoraInicio,
         inicio.setTime(value.getDataHoraInicio());
         fim.setTime(value.getDataHoraFim());
 
-        if(inicio.get(Calendar.DAY_OF_YEAR) == fim.get(Calendar.DAY_OF_YEAR)){
+        if((inicio.get(Calendar.DAY_OF_YEAR) == fim.get(Calendar.DAY_OF_YEAR)) && (inicio.get(Calendar.YEAR) == fim.get(Calendar.YEAR))){
             return true;
         }
-
         return false;
-    
     }
-    
-
 }
-
-// private Date after(Date d, Calendar c) {
-//     Date after;
-//     c.setTime(d);
-//     c.add(Calendar.DATE, 7);
-//     after = c.getTime();
-//     System.out.println("Dia after" + after);
-//     return after;
-// }

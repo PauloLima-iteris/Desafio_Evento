@@ -6,7 +6,6 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ ElementType.TYPE })
@@ -15,7 +14,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface DataHoraFim {
 
-    String message() default "Data de inicio inválida.";
+    String message() default "Data de Fim em dia diferente de Inicio.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 } 

@@ -14,6 +14,7 @@ public class DataHoraInicioValidator implements ConstraintValidator<DataHoraInic
         }
         Date d = new Date();
         Long diaEvento = value.getTime();
+
         Long valor = diaEvento - d.getTime();
 
         if(valor <= 86400000){
