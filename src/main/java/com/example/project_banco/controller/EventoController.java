@@ -58,7 +58,8 @@ public class EventoController {
 	public ResponseEntity<EventoResponse> post(@Valid @RequestBody EventoRequest model) {
 		Evento evento = mapper.fromDto(model);
 		evento.setCategoriaEvento(categoriaeventoService.findById(model.getIdCategoriaEvento()));
-		evento.setEventoStatus(statuseventoService.findById(model.getIdEventoStatus()));
+		//evento.setEventoStatus(statuseventoService.findById(model.getIdEventoStatus()));
+		evento.setEventoStatus(statuseventoService.findById(1));
 		eventoService.createEvento(evento);
 		return ResponseEntity.ok(mapper.toDto(evento));
 	}

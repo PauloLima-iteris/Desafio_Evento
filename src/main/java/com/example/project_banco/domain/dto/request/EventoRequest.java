@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class EventoRequest {
 
-    private Integer IdEventoStatus;
+    //private Integer IdEventoStatus;
 
     private Integer IdCategoriaEvento;
 
