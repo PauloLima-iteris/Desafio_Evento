@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import com.example.project_banco.domain.dto.request.EventoRequest;
 
-public class CancelarEventoValidator implements ConstraintValidator<DataHoraFim, EventoRequest> {
+public class CancelarEventoValidator implements ConstraintValidator<CancelarEvento, EventoRequest> {
 
     @Override
     public boolean isValid(EventoRequest value, ConstraintValidatorContext context) {
@@ -20,7 +20,7 @@ public class CancelarEventoValidator implements ConstraintValidator<DataHoraFim,
         diaEvento.setTime(value.getDataHoraInicio());
         deletarEvento.setTime(new Date());
 
-        if((diaEvento.get(Calendar.DAY_OF_YEAR) != deletarEvento.get(Calendar.DAY_OF_YEAR)) && (diaEvento.get(Calendar.YEAR) != deletarEvento.get(Calendar.YEAR))){
+        if((diaEvento.get(Calendar.DAY_OF_YEAR) == deletarEvento.get(Calendar.DAY_OF_YEAR)) && (diaEvento.get(Calendar.YEAR) == deletarEvento.get(Calendar.YEAR))){
             return true;
         }
         return false;

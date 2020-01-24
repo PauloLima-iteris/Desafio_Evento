@@ -1,3 +1,4 @@
+
 package com.example.project_banco.repository;
 
 import com.example.project_banco.domain.entities.Evento;
@@ -11,4 +12,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     @Query(nativeQuery = true, value = "select distinct name from Evento")
     List<String> listDistinct();
+
+    // @Query(nativeQuery = true, value = "select IdEventoStatus from Evento where IdEventoStatus = :d")
+    // Integer valor(int d);
 }

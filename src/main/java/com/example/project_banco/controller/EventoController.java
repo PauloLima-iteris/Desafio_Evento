@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,13 +39,20 @@ public class EventoController {
 	}
 	
 	@GetMapping(value = "/{id}")
-    public ResponseEntity<EventoResponse> getById(@PathVariable Integer IdEvento) {
-         return ResponseEntity.ok(mapper.toDto(eventoService.findById(IdEvento))) ;
+    public ResponseEntity<EventoResponse> getById(@PathVariable Integer id) {
+         return ResponseEntity.ok(mapper.toDto(eventoService.findById(id))) ;
     }
     
 	@GetMapping
 	public ResponseEntity<List<EventoResponse>> list() {
 		return ResponseEntity.ok(eventoService.listEvento().stream() //
+				.map(x -> mapper.toDto(x)) //
+				.collect(Collectors.toList()));
+	}
+
+	@GetMapping(value = "/usuario")
+	public ResponseEntity<List<EventoResponse>> listEventoUsuario() {
+		return ResponseEntity.ok(eventoService.listEventoUsuario().stream() //
 				.map(x -> mapper.toDto(x)) //
 				.collect(Collectors.toList()));
 	}
@@ -58,26 +66,32 @@ public class EventoController {
 	public ResponseEntity<EventoResponse> post(@Valid @RequestBody EventoRequest model) {
 		Evento evento = mapper.fromDto(model);
 		evento.setCategoriaEvento(categoriaeventoService.findById(model.getIdCategoriaEvento()));
-		//evento.setEventoStatus(statuseventoService.findById(model.getIdEventoStatus()));
 		evento.setEventoStatus(statuseventoService.findById(1));
 		eventoService.createEvento(evento);
 		return ResponseEntity.ok(mapper.toDto(evento));
 	}
 
-	// @PutMapping(value = "/{id}")
-	// public ResponseEntity<EventoResponse> update(@PathVariable Integer IdEvento, @Valid @RequestBody EventoRequest model){
-	// 	Evento evento = mapper.fromDto(model);
-	// 	evento.setIdEvento(IdEvento);
-	// 	eventoService.update(evento);
+	@PutMapping(value = "/cancelar/{id}")
+	public ResponseEntity<EventoResponse> update(@PathVariable Integer id){
 
-	// 	return ResponseEntity.ok(mapper.toDto(evento));
-	// }
+		return ResponseEntity.ok(mapper.toDto(eventoService.cancelar(id)));
+	}
 
 	@DeleteMapping(value = "/{id}")
-    public void deleteById(@PathVariable Integer IdEvento) {
+    public void deleteById(@PathVariable Integer id) {
 
-		eventoService.delete(IdEvento);
+		eventoService.delete(id);
+	}
 
+	@PutMapping(value = "/iniciar/{id}")
+	public ResponseEntity<EventoResponse> iniciar(@PathVariable Integer id){
+
+		return ResponseEntity.ok(mapper.toDto(eventoService.iniciar(id)));
+	}
+
+	@PutMapping(value = "/iniciarEvento/{id}")
+	public ResponseEntity<EventoResponse> iniciarevento(@PathVariable Integer id){
+		return ResponseEntity.ok(mapper.toDto(eventoService.iniciarevento(id)));
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.example.project_banco.domain.dto.request;
 import com.example.project_banco.domain.validators.DataHoraFim;
-import com.example.project_banco.domain.validators.DataHoraInicio;
 import java.util.Date;
 
 import javax.validation.constraints.Future;
@@ -11,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @DataHoraFim
 @Data

@@ -44,7 +44,7 @@ public class Evento {
     @Column(nullable = false, length = 1000)
     private String Descricao;
 
-    @Column(nullable = false)
+    @Column(name = "LimiteVagas", nullable = false)
     private Integer LimiteVagas;
 } 
 

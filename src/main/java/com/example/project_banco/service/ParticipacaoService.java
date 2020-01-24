@@ -3,6 +3,7 @@ package com.example.project_banco.service;
 import java.util.Optional;
 import java.util.List;
 import com.example.project_banco.exception.DataNotFoundException;
+import com.example.project_banco.domain.entities.Evento;
 import com.example.project_banco.domain.entities.Participacao;
 import com.example.project_banco.repository.ParticipacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,20 @@ import org.springframework.stereotype.Service;
 public class ParticipacaoService {
 
     private final ParticipacaoRepository participacaoRepository;
+    private final EventoService eventoService;
 
     @Autowired
-    public ParticipacaoService(ParticipacaoRepository participacaoRepository) {
+    public ParticipacaoService(ParticipacaoRepository participacaoRepository, EventoService eventoService) {
         this.participacaoRepository = participacaoRepository;
+        this.eventoService = eventoService;
     }
 
     public Participacao createParticipacao(Participacao model) {
+
+        Evento evento = eventoService.findById(model.getIdEvento());
+
+        //evento.getLimiteVagas()
+
         return participacaoRepository.save(model);
     }
 

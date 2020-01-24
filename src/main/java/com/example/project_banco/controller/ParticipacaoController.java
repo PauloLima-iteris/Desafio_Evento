@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.example.project_banco.domain.dto.request.ParticipacaoRequest;
 import com.example.project_banco.domain.dto.response.ParticipacaoResponse;
-import com.example.project_banco.service.EventoService;
 import com.example.project_banco.service.ParticipacaoService;
 import com.example.project_banco.domain.entities.Participacao;
 import com.example.project_banco.domain.mapper.ParticipacaoMapper;
