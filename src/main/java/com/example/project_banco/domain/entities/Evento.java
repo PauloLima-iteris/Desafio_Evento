@@ -10,12 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @Entity
+@AllArgsConstructor
 public class Evento {
+
+    public Evento() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

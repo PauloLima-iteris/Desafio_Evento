@@ -25,8 +25,6 @@ public class ParticipacaoService {
 
         Evento evento = eventoService.findById(model.getIdEvento());
 
-        //evento.getLimiteVagas()
-
         return participacaoRepository.save(model);
     }
 

@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import com.example.project_banco.exception.DataNotFoundException;
-import com.example.project_banco.domain.dto.request.EventoRequest;
 import com.example.project_banco.domain.entities.Evento;
 import com.example.project_banco.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +112,6 @@ public class EventoService {
         Long confirmacao = iniD.getTimeInMillis();
 
         if(confirmacao < inicioevento){
-
             throw new DataNotFoundException("Não é possivel alterar o status do evento");
         }
 
